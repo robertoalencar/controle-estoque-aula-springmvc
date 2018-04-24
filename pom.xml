@@ -17,6 +17,9 @@
 
 		<!-- Spring MVC -->
 		<spring.version>5.0.5.RELEASE</spring.version>
+		
+		<!-- Hibernate -->
+		<hibernate.version>5.2.6.Final</hibernate.version>
 
 	</properties>
 
@@ -43,6 +46,8 @@
 	</build>
 
 	<dependencies>
+	
+		<!-- Spring MVC -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -62,7 +67,23 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+		
+		<!-- Driver MSQL -->
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.5</version>
+		</dependency>
+		
+		<!-- Hibernate -->
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>${hibernate.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 </project>

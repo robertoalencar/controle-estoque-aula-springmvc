@@ -7,12 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Incluir Produto</title>
 
-<link rel="stylesheet" type="text/css" href="WEB-INF/view/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript" src="WEB-INF/view/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 
-<body>
+<body style="margin-left: 5%; margin-right: 5%;">
 
 	<hr>
 	<h3>Incluir Produto</h3>
@@ -30,34 +30,38 @@
 			<input type="text" id="inputDescricao" class="form-control" name="descricao" style="width: 500px;" maxlength="100" required="required" />
 		</div>
 		
-		<p>
-			Preco de Custo: <br />
-			<input type="text" name="precoCusto" />
-		</p>
+		<div class="form-group">
+			<label for="inputPrecoCusto">Preco de Custo</label>
+			<input type="text" id="inputPrecoCusto" class="form-control" name="precoCusto" style="width: 100px;" required="required" />
+		</div>
 		
-		<p>
-			Preco de Venda: <br />
-			<input type="text" name="precoVenda" />
-		</p>
+		<div class="form-group">
+			<label for="inputPrecoVenda">Preço de Venda</label>
+			<input type="text" id="inputPrecoVenda" class="form-control" name="precoVenda" style="width: 100px;" required="required" />
+		</div>
 		
-		<p>
-			Garantia: <br />
-			<input type="text" name="garantia" />
-		</p>
+		<div class="form-group">
+			<label for="inputGarantia">Garantia</label>
+			<input type="text" id="inputGarantia" class="form-control" name="garantia" style="width: 100px;" required="required" />
+		</div>
 		
-		<p>
-			Quantidade: <br />
-			<input type="text" name="quantidade" />
-		</p>
+		<div class="form-group">
+			<label for="inputQuantidade">Quantidade</label>
+			<input type="text" id="inputQuantidade" class="form-control" name="quantidade" style="width: 50px;" required="required" />
+		</div>
 		
-		<p>
-			Foto do Produto: <br />
-			<input type="file" name="file">
-		</p>
+		<div class="form-group">
+			<label for="inputImagem">Imagem do Produto</label>
+			<input type="file" id="inputImagem" name="file">
+		</div>
 		
-		<p> 
-			<input type="submit" value="Inserir"> 
-		</p>
+		<br />
+		
+		<div class="form-group">
+			<a href="listarProduto" class="btn btn-danger" role="button">Cancelar</a> &nbsp;
+			<button type="reset" class="btn btn-default"> &nbsp; Limpar &nbsp; </button> &nbsp;
+			<button type="submit" class="btn btn-primary"> &nbsp; Inserir &nbsp; </button>
+		</div>
 		
 	</form>
 

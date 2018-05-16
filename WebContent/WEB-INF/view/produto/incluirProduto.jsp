@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -13,6 +15,8 @@
 </head>
 
 <body style="margin-left: 5%; margin-right: 5%;">
+
+	<c:import url="/WEB-INF/view/comum/menu.jsp" />
 
 	<hr>
 	<h3>Incluir Produto</h3>

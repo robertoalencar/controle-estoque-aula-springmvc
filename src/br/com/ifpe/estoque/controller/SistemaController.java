@@ -16,5 +16,11 @@ public class SistemaController {
 	System.out.println("Executando a lógica com Spring MVC.");
 	return "olaMundo";
     }
+    
+    @RequestMapping("testesComScriptlet")
+    public String testesComScriptlet() {
+
+	return "testesComScriptlet";
+    }
 
 }

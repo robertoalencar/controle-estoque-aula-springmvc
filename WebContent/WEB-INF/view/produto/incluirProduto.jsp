@@ -16,6 +16,7 @@
 
 <body style="margin-left: 5%; margin-right: 5%;">
 
+<br />
 	<c:import url="/WEB-INF/view/comum/menu.jsp" />
 
 	<hr>

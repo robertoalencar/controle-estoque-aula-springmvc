@@ -23,6 +23,8 @@
 	<h3>Incluir Produto</h3>
 	<hr>
 	
+	<div style="text-align: center; color: red;"> ${mensagem} </div>
+	
 	<form action="save" method="post" enctype="multipart/form-data">
 
 		<div class="form-group">

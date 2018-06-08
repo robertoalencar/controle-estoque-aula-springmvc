@@ -20,12 +20,31 @@
 	<br />
 	<c:import url="/WEB-INF/view/comum/menu.jsp" />
 
+	<hr> 
+	<h3>Filtro Produtos</h3>
 	<hr>
-	<h3>Listar Produto</h3>
+	
+	<div>
+		<form action="filter">
+			<div class="form-group">
+				<label for="inputCodigo">Código</label>
+				<input type="text" id="inputCodigo" class="form-control" name="codigo" style="width: 100px;" maxlength="5" value="${produto.codigo}" />
+			</div>
+			<div class="form-group">
+				<label for="inputDescricao">Descrição</label>
+				<input type="text" id="inputDescricao" class="form-control" name="descricao" style="width: 500px;" maxlength="100" value="${produto.descricao}" />
+			</div>
+			<div class="form-group">
+				<button type="reset" class="btn btn-default"> &nbsp; Limpar &nbsp; </button> &nbsp;
+				<button type="submit" class="btn btn-primary"> &nbsp; Filtrar &nbsp; </button>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+	<h3>Lista Produtos</h3>
 	<hr>
 
-	<jsp:useBean id="dao" class="br.com.ifpe.estoque.model.ProdutoDao"/>
-	
 	<table id="tabelaListaProduto" class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -39,7 +58,7 @@
 				<th style="width: 15%; vertical-align: middle; text-align: center;">Ações</th>
 			</tr>
 		</thead>
-		<c:forEach var="produto" items="${dao.listar()}">
+		<c:forEach var="produto" items="${listaProduto}">
 				<tr>
 					<td style="vertical-align: middle; text-align: center;">${produto.codigo}</td>
 					<td style="vertical-align: middle;">${produto.descricao}</td>

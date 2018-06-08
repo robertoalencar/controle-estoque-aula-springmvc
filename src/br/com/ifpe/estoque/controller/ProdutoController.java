@@ -1,5 +1,7 @@
 package br.com.ifpe.estoque.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class ProdutoController {
     }
 
     @RequestMapping("/produto/save")
-    public String save(Produto produto, @RequestParam("file") MultipartFile imagem) {
+    public String save(Produto produto, @RequestParam("file") MultipartFile imagem, Model model) {
 
 	if (Util.fazerUploadImagem(imagem)) {
 	    produto.setImagem(Util.obterMomentoAtual() + " - " + imagem.getOriginalFilename());
@@ -28,11 +30,27 @@ public class ProdutoController {
 
 	ProdutoDao dao = new ProdutoDao();
 	dao.salvar(produto);
-	return "produto/incluirProdutoSucesso";
+
+	model.addAttribute("mensagem", "Produto Incluído com Sucesso");
+	return "produto/incluirProduto";
     }
 
     @RequestMapping("/produto/list")
     public String listarProduto(Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	List<Produto> listaProduto = dao.listar(null);
+	model.addAttribute("listaProduto", listaProduto);
+
+	return "produto/listarProduto";
+    }
+    
+    @RequestMapping("/produto/filter")
+    public String filtrarProduto(Produto produto, Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	List<Produto> listaProduto = dao.listar(produto);
+	model.addAttribute("listaProduto", listaProduto);
 
 	return "produto/listarProduto";
     }

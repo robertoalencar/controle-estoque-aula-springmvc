@@ -69,7 +69,7 @@
 			    	<td style="vertical-align: middle; text-align: center;"> 
 			    		<c:choose>
 							<c:when test="${not empty produto.imagem}">
-								<img src="<%=request.getContextPath()%>/resources/view/img/${produto.imagem}">
+								<img src="<%=request.getContextPath()%>/resources/img/${produto.imagem}">
 							</c:when>
 							<c:otherwise>
 								Imagem não carregada.

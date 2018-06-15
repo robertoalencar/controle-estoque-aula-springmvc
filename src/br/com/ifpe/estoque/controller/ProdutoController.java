@@ -44,7 +44,7 @@ public class ProdutoController {
 
 	return "produto/listarProduto";
     }
-    
+
     @RequestMapping("/produto/filter")
     public String filtrarProduto(Produto produto, Model model) {
 
@@ -53,6 +53,36 @@ public class ProdutoController {
 	model.addAttribute("listaProduto", listaProduto);
 
 	return "produto/listarProduto";
+    }
+
+    @RequestMapping("/produto/edit")
+    public String edit(@RequestParam("id") Integer id, Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	Produto produto = dao.buscarPorId(id);
+	model.addAttribute("produto", produto);
+
+	return "produto/alterarProduto";
+    }
+
+    @RequestMapping("/produto/update")
+    public String update(Produto produto, Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	dao.alterar(produto);
+	model.addAttribute("mensagem", "Produto Alterado com Sucesso !");
+
+	return "forward:list";
+    }
+
+    @RequestMapping("/produto/delete")
+    public String delete(@RequestParam("id") Integer id, Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	dao.remover(id);
+	model.addAttribute("mensagem", "Produto Removido com Sucesso");
+
+	return "forward:list";
     }
 
 }

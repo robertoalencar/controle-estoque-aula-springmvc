@@ -44,6 +44,8 @@
 	<hr>
 	<h3>Lista Produtos</h3>
 	<hr>
+	
+	<div style="text-align: center; color: red;"> ${mensagem} </div> <br/>
 
 	<table id="tabelaListaProduto" class="table table-striped table-bordered">
 		<thead>
@@ -69,14 +71,17 @@
 			    	<td style="vertical-align: middle; text-align: center;"> 
 			    		<c:choose>
 							<c:when test="${not empty produto.imagem}">
-								<img src="<%=request.getContextPath()%>/resources/img/${produto.imagem}">
+								<img src="<%=request.getContextPath()%>/resources/img/${produto.imagem}" style="width: 30%;">
 							</c:when>
 							<c:otherwise>
 								Imagem não carregada.
 							</c:otherwise>
 						</c:choose>
 			    	</td>
-					<td style="vertical-align: middle; text-align: center;"> &nbsp;	</td>
+					<td style="vertical-align: middle; text-align: center;">
+						<a href="edit?id=${produto.id}">Alterar</a> &nbsp; &nbsp;
+						<a href="delete?id=${produto.id}">Remover</a>					
+					</td>
 				</tr>
 		</c:forEach>
 	</table>

@@ -12,6 +12,7 @@
 					http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="br.com.ifpe.estoque" />
+    <mvc:annotation-driven conversion-service="conversionService" />
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/" />
@@ -25,6 +26,12 @@
 	<!-- A linha abaixo é necessária para poder carregar nos JSP os arquivos CSS, imagens, JavaScript e etc -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	<mvc:annotation-driven />
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+	  <property name="converters">
+	    <list>
+		  <bean class="br.com.ifpe.estoque.converters.DataConverter" />
+	    </list>
+	  </property>
+	</bean>
 	
 </beans>

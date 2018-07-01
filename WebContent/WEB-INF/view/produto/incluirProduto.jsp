@@ -23,7 +23,12 @@
 	<h3>Incluir Produto</h3>
 	<hr>
 	
-	<div style="text-align: center; color: red;"> ${mensagem} </div>
+	<c:if test="${msg ne null}">
+		<div class="alert alert-error" style="width: 70%;">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			${mensagem}
+		</div>
+	</c:if>
 	
 	<form action="save" method="post" enctype="multipart/form-data">
 
@@ -35,6 +40,16 @@
 		<div class="form-group">
 			<label for="inputDescricao">Descrição</label>
 			<input type="text" id="inputDescricao" class="form-control" name="descricao" style="width: 500px;" maxlength="100" required="required" />
+		</div>
+		
+		<div class="form-group">
+			<label for="categoriaProduto">Categoria</label> <br />
+			<select id="categoriaProduto" name="categoriaProduto" style="width: 200px; height: 30px; border: 1px solid #BDC7D8; color: #000000; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+				<option value=""> Selecione </option>
+				<c:forEach items="${listaCategoriaProduto}" var="obj">
+					<option value="${obj.id}"> ${obj.descricao} </option>
+				</c:forEach> 
+			</select>
 		</div>
 		
 		<div class="form-group">
@@ -65,7 +80,7 @@
 		<br />
 		
 		<div class="form-group">
-			<a href="listarProduto" class="btn btn-danger" role="button">Cancelar</a> &nbsp;
+			<a href="<%=request.getContextPath()%>/produto/list" class="btn btn-danger" role="button">Cancelar</a> &nbsp;
 			<button type="reset" class="btn btn-default"> &nbsp; Limpar &nbsp; </button> &nbsp;
 			<button type="submit" class="btn btn-primary"> &nbsp; Inserir &nbsp; </button>
 		</div>

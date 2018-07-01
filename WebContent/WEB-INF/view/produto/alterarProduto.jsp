@@ -41,6 +41,16 @@
 		</div>
 		
 		<div class="form-group">
+			<label for="categoriaProduto">Categoria</label> <br />
+			<select id="categoriaProduto" name="categoriaProduto" style="width: 200px; height: 30px; border: 1px solid #BDC7D8; color: #000000; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+				<option value=""> Selecione </option>
+				<c:forEach items="${listaCategoriaProduto}" var="obj">
+					<option value="${obj.id}" <c:if test="${obj.id eq produto.categoriaProduto.id}">selected="selected"</c:if>> ${obj.descricao} </option>
+				</c:forEach> 
+			</select>
+		</div>
+		
+		<div class="form-group">
 			<label for="inputPrecoCusto">Preco de Custo</label>
 			<input type="text" id="inputPrecoCusto" class="form-control" name="precoCusto" style="width: 100px;" required="required" value="${produto.precoCusto}" />
 		</div>

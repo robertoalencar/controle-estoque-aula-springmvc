@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.ifpe.estoque.model.CategoriaProduto;
+import br.com.ifpe.estoque.model.CategoriaProdutoDao;
 import br.com.ifpe.estoque.model.Produto;
 import br.com.ifpe.estoque.model.ProdutoDao;
 import br.com.ifpe.estoque.util.Util;
@@ -16,7 +18,12 @@ import br.com.ifpe.estoque.util.Util;
 public class ProdutoController {
 
     @RequestMapping("/produto/add")
-    public String adicionarProduto() {
+    public String adicionarProduto(Model model) {
+
+	// Código para popular o combo de categoria de produto
+	CategoriaProdutoDao dao = new CategoriaProdutoDao();
+	List<CategoriaProduto> listaCategoriaProduto = dao.listar(null);
+	model.addAttribute("listaCategoriaProduto", listaCategoriaProduto);
 
 	return "produto/incluirProduto";
     }

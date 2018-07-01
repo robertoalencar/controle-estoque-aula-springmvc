@@ -27,11 +27,12 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-	  <property name="converters">
-	    <list>
-		  <bean class="br.com.ifpe.estoque.converters.DataConverter" />
-	    </list>
-	  </property>
+		<property name="converters">
+	    	<list>
+		  		<bean class="br.com.ifpe.estoque.converters.DataConverter" />
+		  		<bean class="br.com.ifpe.estoque.converters.CategoriaProdutoConverter" />
+	    	</list>
+	  	</property>
 	</bean>
 	
 </beans>

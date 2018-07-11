@@ -1,0 +1,1 @@
+&copy; 2016 - IFPE Campus Jaboatão - Todos os direitos reservados - v.1.0

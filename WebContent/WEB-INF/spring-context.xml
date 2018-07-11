@@ -35,4 +35,8 @@
 	  	</property>
 	</bean>
 	
+	<mvc:interceptors>
+		<bean class="br.com.ifpe.estoque.util.AutorizadorInterceptor" />
+	</mvc:interceptors>
+	
 </beans>

@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.converters;
+package main.br.com.ifpe.estoque.converters;
 
 import java.util.Calendar;
 import java.util.Date;

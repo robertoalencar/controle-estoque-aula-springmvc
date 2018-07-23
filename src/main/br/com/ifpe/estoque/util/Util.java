@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.util;
+package main.br.com.ifpe.estoque.util;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -20,7 +20,7 @@ public class Util {
 	int minuto = c.get(Calendar.MINUTE);
 	int segundo = c.get(Calendar.SECOND);
 
-	String momentoUpload = ano + "-" + (mes+1) + "-" + dia + "-" + hora + "-" + minuto + "-" + segundo;
+	String momentoUpload = ano + "-" + (mes + 1) + "-" + dia + "-" + hora + "-" + minuto + "-" + segundo;
 
 	return momentoUpload;
     }

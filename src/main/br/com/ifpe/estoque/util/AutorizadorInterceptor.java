@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.util;
+package main.br.com.ifpe.estoque.util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +12,14 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 	    throws Exception {
 
 	String uri = request.getRequestURI();
-	if (uri.contains("bootstrap") || uri.contains("css") || uri.contains("img") || uri.contains("js")
-		|| uri.endsWith("controle-estoque/") || uri.endsWith("efetuarLogin")) {
+	if (uri.contains("bootstrap") 
+		|| uri.contains("css") 
+		|| uri.contains("img") 
+		|| uri.contains("js")
+		|| uri.endsWith("controle-estoque/") 
+		|| uri.endsWith("efetuarLogin") 
+		|| uri.endsWith("usuario/add")
+		|| uri.endsWith("usuario/save")) {
 
 	    return true;
 	}

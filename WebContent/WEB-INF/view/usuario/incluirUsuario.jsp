@@ -18,7 +18,16 @@
 
 	<br />
 	
-	<c:import url="/WEB-INF/view/comum/menu.jsp" />
+	<c:choose>
+		<c:when test="${usuarioLogado != null}">
+			<c:import url="/WEB-INF/view/comum/menu.jsp" />
+		</c:when>
+		<c:otherwise>
+			<p>
+				<a href="<%=request.getContextPath()%>">Login</a> &nbsp; &nbsp;
+			</p>
+		</c:otherwise>
+	</c:choose>
 
 	<hr>
 	<h3>Incluir Usuário</h3>
@@ -51,7 +60,9 @@
 		<br />
 		
 		<div class="form-group">
-			<a href="<%=request.getContextPath()%>/usuario/list" class="btn btn-danger" role="button">Cancelar</a> &nbsp;
+			<c:if test="${usuarioLogado != null}">
+				<a href="<%=request.getContextPath()%>/usuario/list" class="btn btn-danger" role="button">Cancelar</a> &nbsp;
+			</c:if>
 			<button type="reset" class="btn btn-default"> &nbsp; Limpar &nbsp; </button> &nbsp;
 			<button type="submit" class="btn btn-primary"> &nbsp; Inserir &nbsp; </button>
 		</div>

@@ -11,7 +11,7 @@
 					http://www.springframework.org/schema/context
 					http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:component-scan base-package="br.com.ifpe.estoque" />
+    <context:component-scan base-package="main.br.com.ifpe.estoque" />
     <mvc:annotation-driven conversion-service="conversionService" />
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -29,14 +29,14 @@
 	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
 		<property name="converters">
 	    	<list>
-		  		<bean class="br.com.ifpe.estoque.converters.DataConverter" />
-		  		<bean class="br.com.ifpe.estoque.converters.CategoriaProdutoConverter" />
+		  		<bean class="main.br.com.ifpe.estoque.converters.DataConverter" />
+		  		<bean class="main.br.com.ifpe.estoque.converters.CategoriaProdutoConverter" />
 	    	</list>
 	  	</property>
 	</bean>
 	
 	<mvc:interceptors>
-		<bean class="br.com.ifpe.estoque.util.AutorizadorInterceptor" />
+		<bean class="main.br.com.ifpe.estoque.util.AutorizadorInterceptor" />
 	</mvc:interceptors>
 	
 </beans>

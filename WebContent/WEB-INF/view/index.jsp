@@ -21,7 +21,14 @@
 
 	<div align="center" style="color: #6E6E6E;">
 	
+		<br />
+	
 		<table style="width: 70%;">
+			<tr>
+				<td align="left">
+					<a href="<%=request.getContextPath()%>/usuario/add">Criar Conta</a> &nbsp; &nbsp;
+				</td>
+			</tr>
 			<tr>
 				<td style="text-align: left; width: 70%; vertical-align: bottom;">
 					Bem vindo ao sistema <strong>EstoqueControl</strong>, informe seu login e senha para acessar o sistema.

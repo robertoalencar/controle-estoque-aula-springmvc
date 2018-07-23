@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.controller;
+package main.br.com.ifpe.estoque.controller;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.ifpe.estoque.model.Usuario;
-import br.com.ifpe.estoque.model.UsuarioDao;
+import main.br.com.ifpe.estoque.model.Usuario;
+import main.br.com.ifpe.estoque.model.UsuarioDao;
+import main.br.com.ifpe.estoque.util.Criptografia;
 
 @Controller
 public class UsuarioController {
@@ -25,6 +26,7 @@ public class UsuarioController {
     public String save(Usuario usuario, Model model) {
 
 	UsuarioDao dao = new UsuarioDao();
+	usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
 	dao.salvar(usuario);
 	model.addAttribute("mensagem", "Usuario Incluído com Sucesso");
 
@@ -62,8 +64,12 @@ public class UsuarioController {
     }
 
     @RequestMapping("/usuario/update")
-    public String update(Usuario usuario, Model model) {
+    public String update(Usuario usuario, @RequestParam("senhaOriginal") String senhaOriginal, Model model) {
 
+	if (!usuario.getSenha().equals(senhaOriginal)) {
+	    usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
+	}
+	
 	UsuarioDao dao = new UsuarioDao();
 	dao.alterar(usuario);
 	model.addAttribute("mensagem", "Usuário Alterado com Sucesso !");
@@ -91,6 +97,7 @@ public class UsuarioController {
     public String efetuarLogin(Usuario usuario, HttpSession session, Model model) {
 
 	UsuarioDao dao = new UsuarioDao();
+	usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
 	Usuario usuarioLogado = dao.buscarUsuario(usuario);
 
 	if (usuarioLogado != null) {

@@ -47,6 +47,7 @@
 		
 		<div class="form-group">
 			<label for="inputSenha">Senha</label>
+			<input type="hidden" name="senhaOriginal" value="${usuario.senha}" />
 			<input type="password" id="inputSenha" class="form-control" name="senha" style="width: 300px;" required="required" value="${usuario.senha}" />
 		</div>
 		

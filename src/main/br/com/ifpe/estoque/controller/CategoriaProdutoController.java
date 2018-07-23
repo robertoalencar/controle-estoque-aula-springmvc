@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.controller;
+package main.br.com.ifpe.estoque.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.ifpe.estoque.model.CategoriaProduto;
-import br.com.ifpe.estoque.model.CategoriaProdutoDao;
+import main.br.com.ifpe.estoque.model.CategoriaProduto;
+import main.br.com.ifpe.estoque.model.CategoriaProdutoDao;
 
 @Controller
 public class CategoriaProdutoController {

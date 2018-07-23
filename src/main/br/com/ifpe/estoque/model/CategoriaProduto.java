@@ -1,4 +1,4 @@
-package br.com.ifpe.estoque.model;
+package main.br.com.ifpe.estoque.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

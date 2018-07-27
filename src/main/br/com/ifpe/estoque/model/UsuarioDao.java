@@ -108,12 +108,7 @@ public class UsuarioDao {
 	query.setParameter("paramLogin", usuario.getLogin());
 	query.setParameter("paramSenha", usuario.getSenha());
 
-	List<Usuario> registros = query.getResultList();
-	Usuario obj = null;
-
-	if (!registros.isEmpty()) {
-	    obj = (Usuario) registros.get(0);
-	}
+	Usuario obj = (Usuario) query.getSingleResult();
 
 	manager.close();
 	factory.close();

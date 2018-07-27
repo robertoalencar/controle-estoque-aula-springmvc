@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 
@@ -23,18 +24,22 @@
 	<h3>Incluir Categoria de Produto</h3>
 	<hr>
 	
-	<div style="text-align: center; color: red;"> ${mensagem} </div>
+	<div style="text-align: center; color: red;"> 
+		${mensagem}
+		<form:errors path="categoriaProduto.codigo" cssStyle="color:red" /> </br>
+		<form:errors path="categoriaProduto.descricao" cssStyle="color:red" />
+	</div>
 	
 	<form action="save" method="post">
 
 		<div class="form-group">
 			<label for="inputCodigo">Código</label>
-			<input type="text" id="inputCodigo" class="form-control" name="codigo" style="width: 100px;" maxlength="5" required="required" />
+			<input type="text" id="inputCodigo" class="form-control" name="codigo" style="width: 100px;" maxlength="5" />
 		</div>
 		
 		<div class="form-group">
 			<label for="inputDescricao">Descrição</label>
-			<input type="text" id="inputDescricao" class="form-control" name="descricao" style="width: 500px;" maxlength="100" required="required" />
+			<input type="text" id="inputDescricao" class="form-control" name="descricao" style="width: 500px;" maxlength="100" />
 		</div>
 		
 		<br />

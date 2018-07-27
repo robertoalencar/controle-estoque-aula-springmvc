@@ -2,8 +2,11 @@ package main.br.com.ifpe.estoque.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,7 +23,11 @@ public class CategoriaProdutoController {
     }
 
     @RequestMapping("/categoriaProduto/save")
-    public String save(CategoriaProduto categoriaProduto, Model model) {
+    public String save(@Valid CategoriaProduto categoriaProduto, BindingResult result, Model model) {
+
+	if (result.hasErrors()) {
+	    return "forward:add";
+	}
 
 	CategoriaProdutoDao dao = new CategoriaProdutoDao();
 	dao.salvar(categoriaProduto);

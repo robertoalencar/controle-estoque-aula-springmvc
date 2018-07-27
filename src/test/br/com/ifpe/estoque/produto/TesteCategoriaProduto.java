@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import main.br.com.ifpe.estoque.model.CategoriaProduto;
 import main.br.com.ifpe.estoque.model.CategoriaProdutoDao;

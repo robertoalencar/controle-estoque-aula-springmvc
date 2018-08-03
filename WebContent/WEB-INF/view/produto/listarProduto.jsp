@@ -51,13 +51,13 @@
 		<thead>
 			<tr>
 				<th style="width: 5%; vertical-align: middle; text-align: center;">Código</th>
-				<th style="width: 25%; vertical-align: middle;">Descrição</th>
+				<th style="width: 20%; vertical-align: middle;">Descrição</th>
 				<th style="width: 10%; vertical-align: middle; text-align: center;">Preço de Custo</th>
 				<th style="width: 10%; vertical-align: middle; text-align: center;">Preço de Venda</th>
 				<th style="width: 10%; vertical-align: middle; text-align: center;">Garantia</th>
 				<th style="width: 5%; vertical-align: middle; text-align: center;">QTD</th>
 				<th style="width: 10%; vertical-align: middle; text-align: center;">Imagem</th>
-				<th style="width: 15%; vertical-align: middle; text-align: center;">Ações</th>
+				<th style="width: 20%; vertical-align: middle; text-align: center;">Ações</th>
 			</tr>
 		</thead>
 		<c:forEach var="produto" items="${listaProduto}">
@@ -80,7 +80,8 @@
 			    	</td>
 					<td style="vertical-align: middle; text-align: center;">
 						<a href="edit?id=${produto.id}">Alterar</a> &nbsp; &nbsp;
-						<a href="delete?id=${produto.id}">Remover</a>					
+						<a href="delete?id=${produto.id}">Remover</a>  &nbsp; &nbsp;		
+						<a href="view?id=${produto.id}">Comprar</a>
 					</td>
 				</tr>
 		</c:forEach>

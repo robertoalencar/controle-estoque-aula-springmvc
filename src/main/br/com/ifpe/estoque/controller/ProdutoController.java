@@ -92,4 +92,13 @@ public class ProdutoController {
 	return "forward:list";
     }
 
+    @RequestMapping("/produto/view")
+    public String view(@RequestParam("id") Integer id, Model model) {
+
+	ProdutoDao dao = new ProdutoDao();
+	Produto produto = dao.buscarPorId(id);
+	model.addAttribute("produto", produto);
+
+	return "produto/exibirProduto";
+    }
 }

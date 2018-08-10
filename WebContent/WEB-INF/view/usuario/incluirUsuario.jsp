@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Incluir Usuário</title>
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/bootstrap/js/bootstrap.min.js"></script>
+<c:import url="/WEB-INF/view/comum/arquivosJS.jsp" />
+<c:import url="/WEB-INF/view/comum/arquivosCSS.jsp" />
 
 </head>
 

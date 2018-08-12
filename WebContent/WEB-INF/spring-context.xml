@@ -35,12 +35,8 @@
 	  	</property>
 	</bean>
 	
-	<!-- Desligando o interceptador para dar os exemplos na aula de JQuery
-	
 	<mvc:interceptors>
 		<bean class="main.br.com.ifpe.estoque.util.AutorizadorInterceptor" />
 	</mvc:interceptors>
-	
-	 -->
 	
 </beans>

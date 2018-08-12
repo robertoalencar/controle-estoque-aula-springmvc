@@ -39,7 +39,7 @@ public class UsuarioDao {
 	if (!nome.equals("") && email.equals("")) {
 	    query = manager.createQuery("FROM Usuario WHERE nome LIKE :paramNome ORDER BY nome");
 	    query.setParameter("paramNome", "%" + nome + "%");
-	} else if (email.equals("") && !email.equals("")) {
+	} else if (nome.equals("") && !email.equals("")) {
 	    query = manager.createQuery("FROM Usuario WHERE email LIKE :paramEmail ORDER BY nome");
 	    query.setParameter("paramEmail", "%" + email + "%");
 	} else if (!nome.equals("") && !email.equals("")) {

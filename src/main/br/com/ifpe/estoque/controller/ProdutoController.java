@@ -2,11 +2,16 @@ package main.br.com.ifpe.estoque.controller;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.Gson;
 
 import main.br.com.ifpe.estoque.model.CategoriaProduto;
 import main.br.com.ifpe.estoque.model.CategoriaProdutoDao;
@@ -46,20 +51,21 @@ public class ProdutoController {
     public String listarProduto(Model model) {
 
 	ProdutoDao dao = new ProdutoDao();
-	List<Produto> listaProduto = dao.listar(null);
+	List<Produto> listaProduto = dao.listar(null, null);
 	model.addAttribute("listaProduto", listaProduto);
+	
+	model.addAttribute("listaCategoriaProduto", new CategoriaProdutoDao().listar(null));
 
 	return "produto/listarProduto";
     }
 
-    @RequestMapping("/produto/filter")
-    public String filtrarProduto(Produto produto, Model model) {
+    @RequestMapping(value = "/produto/filter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String filtrarProduto(@RequestParam String descricao, @RequestParam Integer idCategoria) {
 
 	ProdutoDao dao = new ProdutoDao();
-	List<Produto> listaProduto = dao.listar(produto);
-	model.addAttribute("listaProduto", listaProduto);
+	List<Produto> listaProduto = dao.listar(descricao, idCategoria);
 
-	return "produto/listarProduto";
+	return new Gson().toJson(listaProduto);
     }
 
     @RequestMapping("/produto/edit")

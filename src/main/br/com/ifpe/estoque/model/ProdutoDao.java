@@ -27,25 +27,23 @@ public class ProdutoDao {
 	factory.close();
     }
 
-    public List<Produto> listar(Produto produto) {
+    public List<Produto> listar(String descricao, Integer idCategoria) {
 
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
 	EntityManager manager = factory.createEntityManager();
 	Query query = null;
 
-	String codigo = produto != null ? produto.getCodigo() : "";
-	String descricao = produto != null ? produto.getDescricao() : "";
-
-	if (!codigo.equals("") && descricao.equals("")) {
-	    query = manager.createQuery("FROM Produto WHERE codigo LIKE :paramCodigo ORDER BY descricao");
-	    query.setParameter("paramCodigo", "%" + codigo + "%");
-	} else if (codigo.equals("") && !descricao.equals("")) {
+	if ((descricao != null && !descricao.equals("")) && idCategoria == null) {
 	    query = manager.createQuery("FROM Produto WHERE descricao LIKE :paramDescricao ORDER BY descricao");
 	    query.setParameter("paramDescricao", "%" + descricao + "%");
-	} else if (!codigo.equals("") && !descricao.equals("")) {
+	} else if ((descricao == null || descricao.equals("")) && idCategoria != null) {
+	    query = manager
+		    .createQuery("FROM Produto WHERE categoriaProduto.id LIKE :paramCategoria ORDER BY descricao");
+	    query.setParameter("paramCategoria", idCategoria);
+	} else if ((descricao != null && !descricao.equals("")) && idCategoria != null) {
 	    query = manager.createQuery(
-		    "FROM Produto WHERE codigo LIKE :paramCodigo AND descricao LIKE :paramDescricao ORDER BY descricao");
-	    query.setParameter("paramCodigo", "%" + codigo + "%");
+		    "FROM Produto WHERE categoriaProduto.id LIKE :paramCategoria AND descricao LIKE :paramDescricao ORDER BY descricao");
+	    query.setParameter("paramCategoria", idCategoria);
 	    query.setParameter("paramDescricao", "%" + descricao + "%");
 	} else {
 	    query = manager.createQuery("FROM Produto ORDER BY descricao");
